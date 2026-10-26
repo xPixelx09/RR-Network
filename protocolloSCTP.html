@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocollo SCTP - Reti</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Protocollo SCTP</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="progetti.html">Progetti</a></li>
+                    <li><a href="info.html">Info Utili</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="sctp-info">
+        <div class="container">
+            <h2>Cos'è lo SCTP e a cosa serve?</h2>
+            <p>Lo <strong>Stream Control Transmission Protocol (SCTP)</strong> è un protocollo di trasporto di Livello 4 nato per unire la precisione del TCP (che vi ha già presentato il nostro Gerardo) e la leggerezza dell'UDP. Le sue due vere superpotenze sono il <em>Multi-Homing</em> e il <em>Multi-Streaming</em>. In pratica, una singola connessione può agganciarsi a più indirizzi IP contemporaneamente: se una rete cade, il traffico passa subito all'altra senza far cadere la linea. Inoltre, i dati vengono divisi in flussi indipendenti, quindi se un pacchetto va perso non blocca tutto il resto della comunicazione.</p>
+            
+            <p>Proprio per questa sua estrema affidabilità, lo SCTP non si usa per la normale navigazione web, ma in ambienti <em>mission-critical</em> dove non è ammesso un singolo secondo di down. Parliamo del cuore delle reti mobili 4G e 5G per il controllo delle antenne, del traffico telefonico dei grandi gestori e delle connessioni WebRTC per scambi di dati in tempo reale.</p>
+
+            <img src="Foto1SCTP.png" alt="FotoSCTP1" style="max-width: 100%; margin: 20px 0;">
+
+            <h2>Vulnerabilità e Tecniche di Attacco</h2>
+            <p>Tuttavia, anche questo protocollo ha il suo tallone d'Achille. Di base, non ha una cifratura nativa: i dati viaggiano in chiaro (proprio come gli SMS tradizionali), rendendo facile per un hacker intercettarli tramite <em>Packet Sniffing</em> per spiare, ad esempio, la posizione degli utenti mobili. Inoltre, ogni connessione usa un codice a 32-bit (Verification Tag); se questo codice non è generato in modo abbastanza casuale, un attaccante può indovinarlo, dirottare la connessione e farla cadere o iniettare dati malevoli.</p>
+            
+            <p>Le sue stesse funzionalità possono essere usate contro di lui. Il Multi-Homing, ad esempio, può essere ingannato per deviare di nascosto il traffico verso l'IP dell'hacker (tecnica nota come <em>Malicious Path Injection</em>). Oppure, sfruttando la fase iniziale di connessione, un malintenzionato può inondare il server di false richieste (attacco <em>INIT Flood</em>) fino a esaurire completamente la CPU e la RAM della macchina bersaglio, causando un disservizio totale.</p>
+
+            <img src="Foto2SCTP.png" alt="FotoSCTP2" style="max-width: 100%; margin: 20px 0;">
+
+            <h2>Come difendersi e riconoscere gli attacchi</h2>
+            <p>Per mettere in sicurezza un'infrastruttura SCTP, è fondamentale "tappare" le sue mancanze strutturali. Nelle reti mobili è d'obbligo usare protocolli aggiuntivi come <strong>IPsec</strong> per cifrare il traffico, mentre per il WebRTC si usa il <strong>DTLS</strong>. Bisogna poi configurare i firewall per limitare il numero di pacchetti ricevibili al secondo (Rate-Limiting) e disattivare le funzioni dinamiche del Multi-Homing se non sono strettamente necessarie, bloccando alla radice i tentativi di deviazione del traffico.</p>
+            
+            <p><strong>Analisi Bonus:</strong> Per capire se un attacco è in corso, gli amministratori di rete si affidano a software di analisi del traffico come <em>Wireshark</em>. Se i grafici mostrano picchi improvvisi e ingiustificati nell'uso della CPU dei server, volumi anomali di pacchetti provenienti da IP sconosciuti, o se si nota che il traffico SCTP sta venendo improvvisamente deviato verso indirizzi non autorizzati, significa che il sistema è sotto attacco e bisogna intervenire tempestivamente.</p>
+
+            <img src="Foto3SCTP.png" alt="FotoSCTP3" style="max-width: 100%; margin: 20px 0;">
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 RR-Network Division - Tutti i diritti riservati</p>
+        </div>
+    </footer>
+</body>
+</html>

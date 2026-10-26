@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocollo TCP - Reti</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Protocollo TCP</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="progetti.html">Altri Progetti</a></li>
+                    <li><a href="info.html">Info Utili</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="tcp-info">
+        <div class="container">
+            <h2>Il pilastro affidabile di Internet</h2>
+            <p>Il <strong>Transmission Control Protocol (TCP)</strong> è il vero e proprio motore su cui si regge la comunicazione moderna. Ogni volta che navighiamo su un sito web, inviamo un'email o scarichiamo un file di grandi dimensioni, c'è il TCP che lavora dietro le quinte. Nato negli anni Settanta grazie al lavoro pionieristico di Vinton Cerf e Robert Kahn (e formalizzato nel 1981 con la celebre <em>RFC 793</em>), questo protocollo è stato costantemente aggiornato per supportare l'esplosione di Internet. Il suo scopo principale è uno solo ma fondamentale: garantire che i dati inviati arrivino a destinazione in modo corretto, esattamente nell'ordine previsto e senza perdere per strada neanche un singolo pezzo.</p>
+
+            <img src="Foto1-TCP.png" alt="Schema generale del TCP" style="max-width: 100%; margin: 20px 0;">
+
+            <h2>Le presentazioni ufficiali: il Three-Way Handshake</h2>
+            <p>A differenza di protocolli più sbrigativi (come l'UDP), il TCP è rigorosamente <em>orientato alla connessione</em>. Questo significa che, prima di scambiarsi anche un solo dato utile, i due computer devono presentarsi e mettersi d'accordo tramite una procedura chiamata <strong>Three-Way Handshake</strong>, ovvero una stretta di mano in tre passaggi. Funziona così: il dispositivo che vuole comunicare invia un messaggio iniziale di saluto (SYN); il destinatario risponde confermando la sua totale disponibilità (SYN-ACK); infine, il primo dispositivo manda un'ultima conferma (ACK) chiudendo i convenevoli. Da questo momento, il canale è ufficialmente aperto.</p>
+            
+            <p>Solo a questo punto le informazioni vere e proprie (che sia una fotografia o un lungo documento) vengono frammentate in piccoli blocchi chiamati <em>segmenti</em>. Ogni segmento riceve un "numero di sequenza" univoco, in modo che chi lo riceve sappia esattamente in che ordine rimontare il puzzle, anche se i pezzi arrivano sparpagliati.</p>
+
+            <img src="Foto2-Handshake.png" alt="La stretta di mano a tre vie: SYN, SYN-ACK, ACK" style="max-width: 100%; margin: 20px 0;">
+
+            <h2>Affidabilità totale: controllo flusso e congestione</h2>
+            <p>Cosa succede se c'è traffico sulla rete e un pacchetto viene perso? Il TCP non lascia nulla al caso. Per assicurare l'affidabilità assoluta, utilizza un sistema di ricevute di ritorno: i messaggi di <strong>Acknowledgment (ACK)</strong>. Ogni volta che il destinatario riceve correttamente un pezzo del file, avvisa il mittente. Se il mittente non riceve questa conferma entro un certo tempo, capisce che qualcosa è andato storto e ritrasmette automaticamente le informazioni mancanti.</p>
+            
+            <p>A questo si aggiungono due meccanismi estremamente intelligenti. Il <em>controllo del flusso</em> impedisce a un computer molto veloce di "ingozzare" di dati un dispositivo più lento, adattando la velocità di invio alla capacità di ricezione dell'altro. Il <em>controllo della congestione</em>, invece, guarda allo stato di salute dell'intera rete: se ci sono ingorghi, il TCP riduce spontaneamente la quantità di dati trasmessi contemporaneamente per evitare rallentamenti a catena, rendendo la comunicazione incredibilmente stabile.</p>
+
+            <img src="Foto3-TCP-IP.png" alt="La cooperazione tra protocollo IP e TCP" style="max-width: 100%; margin: 20px 0;">
+
+            <h2>Il lavoro di squadra con l'IP</h2>
+            <p>Tutta questa precisione non servirebbe a molto senza il perfetto lavoro di squadra con l'<strong>Internet Protocol (IP)</strong>. I due protocolli svolgono compiti separati ma totalmente complementari. L'IP fa la parte del postino: si preoccupa esclusivamente dell'indirizzamento e di trovare la strada più breve tra i router per recapitare i pacchetti a destinazione. Il TCP, invece, fa da supervisore: non gli importa da quale strada siano passati i dati, lui si assicura solo che il contenuto arrivi integro, che nessuno dei pacchetti si sia rovinato durante il viaggio e che il file finale venga ricostruito alla perfezione.</p>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 RR-Network Division - Tutti i diritti riservati</p>
+        </div>
+    </footer>
+</body>
+</html>

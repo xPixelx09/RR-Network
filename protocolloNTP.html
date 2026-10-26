@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocollo NTP</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Protocollo NTP</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="progetti.html">Progetti</a></li>
+                    <li><a href="info.html">Info Utili</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="frecciarossa-info">
+        <div class="container">
+            <h2>Protocollo NTP</h2>
+            <p>Il Network Time Protocol (NTP) è uno dei protocolli più vecchi di Internet, operante sulla porta UDP 123, progettato per sincronizzare gli orologi dei sistemi informatici su reti a latenza variabile.</p>
+
+            <h3>Domini di Applicazione</h3>
+            <p>L'NTP è un pilastro invisibile ma fondamentale dell'infrastruttura IT moderna. I suoi principali ambiti di utilizzo includono:</p>
+            <ul>
+
+            <li><strong>Crittografia e Sicurezza:</strong> Protocolli come TLS/SSL e Kerberos richiedono orologi sincronizzati (spesso con una tolleranza massima di 5 minuti) per validare i certificati, generare token temporali e prevenire attacchi di replay.</li>
+            <li><strong>Logging e Auditing:</strong> La correlazione degli eventi nei sistemi SIEM (Security Information and Event Management) è impossibile senza un timestamp univoco e preciso su tutti i server e dispositivi di rete.</li>
+            <li><strong>Sistemi Distribuiti:</strong> Database clusterizzati, sistemi di file distribuiti e transazioni finanziarie dipendono dal tempo esatto per stabilire l'ordine cronologico delle operazioni e risolvere i conflitti.</li>
+            <img src="Foto1NTP.png" alt="Foto1" style="max-width: 100%; margin: 20px 0;">
+            <h3>Vulnerabilità e Tecniche di Attacco</h3>
+        <p>Il protocollo NTP è nato senza meccanismi di sicurezza integrati e, operando su UDP (che non verifica l'identità del mittente), risulta esposto a diverse tipologie di attacchi informatici:</p>
+        
+        <p>Il più noto è l'<strong>attacco DDoS per amplificazione</strong>. Nelle versioni meno recenti dei server NTP è attivo di default un comando chiamato <em>monlist</em>, che restituisce la lista degli ultimi seicento dispositivi connessi. Un attaccante sfrutta questa funzione inviando richieste a vari server pubblici, falsificando però l'indirizzo IP di provenienza per farlo coincidere con quello della vittima (tecnica nota come <strong>IP spoofing</strong>). I server, credendo di rispondere alla vittima, le inviano un'enorme quantità di dati, fino a duecento volte il peso della richiesta originale. Questo effetto valanga satura completamente la banda del bersaglio, isolandolo dalla rete.</p>
+                <img src="Foto2NTP.png" alt="Foto2" style="max-width: 100%; margin: 20px 0;">
+
+        <p>Un'altra minaccia insidiosa è la <strong>manipolazione del tempo</strong>, conosciuta come <em>Time Shifting</em> o <em>NTP Spoofing</em>. Dato che nella sua versione base il protocollo non richiede alcuna autenticazione tra client e server, un hacker può intromettersi nella comunicazione (attacco <strong>Man-in-the-Middle</strong>) e inviare finti pacchetti di aggiornamento. Spostando l'orologio della macchina colpita avanti o indietro nel tempo, l'attaccante riesce a ingannare i sistemi di sicurezza: i certificati dei siti web risultano improvvisamente scaduti e i sistemi di login aziendali bloccano gli accessi ritenendoli invalidi.</p>
+                <img src="Foto3NTP.png" alt="Foto3" style="max-width: 100%; margin: 20px 0;">
+
+        <p>Infine, esiste il <strong>blocco della sincronizzazione</strong> tramite lo spoofing dei messaggi <em>Kiss-o'-Death</em>. Di base, questi sono comandi di controllo legittimi che i server usano per chiedere ai dispositivi connessi di rallentare le richieste in caso di troppo traffico. L'hacker crea finti messaggi di questo tipo e li invia al client fingendosi il server ufficiale. Il dispositivo vittima riceve l'ordine e, obbedendo al finto comando, smette di aggiornare l'orario o si disconnette del tutto. Senza ricevere più aggiornamenti, l'orologio interno si desincronizza gradualmente, causando malfunzionamenti a catena su tutti i servizi di rete che dipendono dalla precisione temporale.</p>
+            
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 RR-Network Division - Tutti i diritti riservati</p>
+        </div>
+    </footer>
+</body>
+</html>

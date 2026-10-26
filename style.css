@@ -1,0 +1,169 @@
+/* Reset di base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body::before {
+    content: "";
+    background-image: url('RRlogo.png'); /* Inserisci qui il nome esatto della foto */
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 400px; /* Modifica questo valore per farlo più grande o più piccolo */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0.15; /* Trasparenza al 15% (da 0.1 a 1). Se lo vuoi più visibile alza il valore */
+    z-index: -1; /* Fondamentale: spinge il logo dietro a tutti i testi e i box */
+    pointer-events: none; /* Impedisce che il logo blocchi i click sui link */
+}
+
+/* Corpo della pagina */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: rgb(7, 7, 7);
+    color: #fefcfc;
+}
+
+/* Container centrale */
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* Header */
+header {
+    background-color: rgb(255, 0, 0);
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5em;
+}
+
+nav ul {
+    list-style: none;
+    margin-top: 15px;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Sezione Servizi */
+#servizi {
+    background-color: #eaeaea;
+    padding: 40px 0;
+}
+
+#servizi h2 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.servizi-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.servizio {
+    background-color: white;
+    padding: 20px;
+    margin: 10px;
+    width: 30%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.servizio h3 {
+    color: rgb(255, 0, 0);
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.servizio p {
+    font-size: 1em;
+    color: #555;
+}
+
+/* Sezione Treni */
+#treni {
+    padding: 40px 0;
+    text-align: center;
+}
+
+#treni h2 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.treni-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.treno {
+    background-color: #c7c1c1;
+    padding: 20px;
+    margin: 10px;
+    width: 30%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.treno h3 {
+    color: #ca0505;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.treno p {
+    font-size: 1em;
+    color: #555;
+}
+
+/* Sezione Info */
+#info {
+    background-color: #f4f4f4;
+    padding: 40px 0;
+    text-align: center;
+}
+
+#info h2 {
+    font-size: 2em;
+    color: #333;
+}
+
+/* Footer */
+footer {
+    background-color: rgb(255, 0, 0);
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 40px;
+}
+
+footer p {
+    font-size: 1em;
+}

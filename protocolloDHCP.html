@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocollo DHCP - Reti</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Protocollo DHCP</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="progetti.html">Progetti</a></li>
+                    <li><a href="info.html">Info Utili</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="dhcp-info">
+        <div class="container">
+            <h2>Il motore del "Plug and Play" di rete</h2>
+            <p>Il <strong>Dynamic Host Configuration Protocol (DHCP)</strong> è quel lavoratore instancabile e invisibile che ci permette di connetterci a una rete senza dover impazzire a configurare parametri a mano. Operando sulle porte UDP 67 e 68, il suo compito è assegnare automaticamente un indirizzo IP, la Subnet Mask, il Gateway e il server DNS a qualsiasi dispositivo ne faccia richiesta. Questo processo avviene tramite uno scambio di quattro messaggi noto come <em>DORA</em> (Discover, Offer, Request, Acknowledge). Dalle reti del Wi-Fi di casa fino ai giganteschi data center aziendali, il DHCP è la tecnologia fondamentale che rende le reti scalabili e di facile accesso.</p>
+
+            <img src="FotoDORA.jpeg" alt="Il processo DORA del DHCP" style="max-width: 100%; margin: 20px 0;">
+
+            <h2>Il lato oscuro del DHCP: Vulnerabilità e Attacchi</h2>
+            <p>Essendo nato negli anni '90, il DHCP ha privilegiato la facilità d'uso rispetto alla sicurezza, omettendo del tutto i controlli di autenticazione. Un computer, infatti, accetta ciecamente i parametri di rete dal primo server che gli risponde, e le richieste iniziali vengono "urlate" in <em>broadcast</em> a tutta la rete locale, permettendo a chiunque sia collegato di intercettarle. Oltretutto, il server assegna l'IP fidandosi esclusivamente dell'indirizzo fisico (MAC Address) della scheda di rete del client, un dato facilissimo da falsificare via software.</p>
+            
+            <p>Questo spalanca le porte a due attacchi devastanti. Il primo è il <strong>DHCP Starvation</strong> (l'esaurimento degli IP): l'hacker usa un software automatico per inondare lo switch di migliaia di finte richieste di connessione, inventando ogni volta un MAC Address diverso. Il server legittimo alloca un IP per ogni finta richiesta fino a esaurire del tutto la sua riserva. In pochi secondi, nessun nuovo utente riuscirà più a connettersi alla rete.</p>
+            
+            <p>Spesso, questa tecnica serve a spianare la strada al colpo vero e proprio: il <strong>Rogue DHCP Server</strong>. L'attaccante collega il proprio PC alla rete aziendale configurandolo come un server DHCP falso. Senza più la concorrenza del server legittimo (ormai svuotato), il Rogue DHCP vince la gara di rapidità e inizia ad assegnare ai dispositivi dei dipendenti parametri malevoli. Imposterà sé stesso come Gateway per intercettare tutto il traffico (attacco <em>Man-in-the-Middle</em>) e fornirà un server DNS alterato per deviare la navigazione verso siti di phishing identici a quelli veri, con lo scopo di rubare le password.</p>
+
+            <img src="FotoROGUE.jpeg" alt="Schema dell'attacco Rogue DHCP e Man in the Middle" style="max-width: 100%; margin: 20px 0;">
+
+            <h2>Come blindare la rete: le contromisure</h2>
+            <p>Per fortuna, gli amministratori di rete hanno ottime armi per difendersi configurando a dovere gli switch aziendali. La difesa assoluta contro i server falsi si chiama <strong>DHCP Snooping</strong>: lo switch viene istruito a fidarsi (<em>Trusted</em>) esclusivamente della porta fisica a cui è fisicamente agganciato il vero server DHCP. Tutte le porte degli utenti sono considerate <em>Untrusted</em>; se da una di queste arriva un pacchetto di assegnazione IP, lo switch lo scarta all'istante e disabilita la presa, "fulminando" il computer dell'hacker.</p>
+            
+            <p>Per stroncare sul nascere la <em>Starvation</em> si usa invece la <strong>Port Security</strong>, imponendo un limite massimo rigidissimo (es. 2 o 3) ai MAC Address che possono transitare su una singola porta del muro. Se l'hacker tenta di generarne migliaia, la porta si spegne in automatico. Nelle aziende più strutturate, si usa direttamente il protocollo <strong>802.1X</strong>, che richiede credenziali aziendali valide prima ancora di permettere al computer di avviare il processo DHCP.</p>
+
+            <img src="FotoSNOOPING.jpeg" alt="DHCP Snooping e Port Security sugli switch" style="max-width: 100%; margin: 20px 0;">
+
+            <h2>Analisi Bonus: I segnali di un attacco in corso</h2>
+            <p>Come facciamo ad accorgerci che un attacco DHCP è in pieno svolgimento? I segnali (Indicatori di Compromissione) sono abbastanza rumorosi. Sui PC Windows delle vittime inizieranno a comparire fastidiosi pop-up con il messaggio <em>"Rilevato conflitto di indirizzi IP"</em>. Navigando su internet, i browser mostreranno continui avvisi di "Certificato non valido" a causa del DNS malevolo che sta tentando di dirottare la vittima verso siti falsi.</p>
+            
+            <p>Lato amministratore, i software di monitoraggio segneranno che il 100% degli IP disponibili è stato assegnato in pochissimi minuti, magari in orario notturno, e i log degli switch esploderanno di porte mandate in blocco difensivo (stato di <em>err-disabled</em>). Basterà aprire il prompt dei comandi di un PC colpito e digitare <code>ipconfig</code> per avere la conferma finale: il Gateway non punterà più al router aziendale, ma all'indirizzo di una postazione locale. L'hacker è dentro la rete.</p>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 RR-Network Division - Tutti i diritti riservati</p>
+        </div>
+    </footer>
+</body>
+</html>
