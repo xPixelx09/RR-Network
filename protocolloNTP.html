@@ -44,6 +44,15 @@
 
         <p>Infine, esiste il <strong>blocco della sincronizzazione</strong> tramite lo spoofing dei messaggi <em>Kiss-o'-Death</em>. Di base, questi sono comandi di controllo legittimi che i server usano per chiedere ai dispositivi connessi di rallentare le richieste in caso di troppo traffico. L'hacker crea finti messaggi di questo tipo e li invia al client fingendosi il server ufficiale. Il dispositivo vittima riceve l'ordine e, obbedendo al finto comando, smette di aggiornare l'orario o si disconnette del tutto. Senza ricevere più aggiornamenti, l'orologio interno si desincronizza gradualmente, causando malfunzionamenti a catena su tutti i servizi di rete che dipendono dalla precisione temporale.</p>
             
+        <br>
+        <br>
+                    <h2>Pacchetti WireShark</h2>
+                <p>L'analisi dei pacchetti NTP (Network Time Protocol) mostra il continuo scambio di messaggi di tipo <em>symmetric active</em> e <em>symmetric passive</em> tra i nodi. Questi pacchetti, che viaggiano in modo leggero e veloce tramite il protocollo di trasporto UDP (sulla porta 123), permettono ai dispositivi di allineare i propri orologi interni con estrema precisione, un fattore critico per la corretta marcatura temporale degli eventi di rete.</p>
+
+                <p align="center" style="margin-top: 40px;">
+    <img src= "NTP.png" alt="NTP" style="max-width: 75%; margin: 20px 0;">
+    </p>
+
         </div>
     </section>
     <footer>

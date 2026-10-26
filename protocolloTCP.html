@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protocollo TCP - Reti</title>
+    <title>Protocollo TCP</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,7 +13,7 @@
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="progetti.html">Altri Progetti</a></li>
+                    <li><a href="progetti.html">Progetti</a></li>
                     <li><a href="info.html">Info Utili</a></li>
                 </ul>
             </nav>
@@ -43,7 +43,13 @@
 
             <h2>Il lavoro di squadra con l'IP</h2>
             <p>Tutta questa precisione non servirebbe a molto senza il perfetto lavoro di squadra con l'<strong>Internet Protocol (IP)</strong>. I due protocolli svolgono compiti separati ma totalmente complementari. L'IP fa la parte del postino: si preoccupa esclusivamente dell'indirizzamento e di trovare la strada più breve tra i router per recapitare i pacchetti a destinazione. Il TCP, invece, fa da supervisore: non gli importa da quale strada siano passati i dati, lui si assicura solo che il contenuto arrivi integro, che nessuno dei pacchetti si sia rovinato durante il viaggio e che il file finale venga ricostruito alla perfezione.</p>
-
+        <br>
+        <br>
+                    <h2>Pacchetti WireShark</h2>
+    <p>Analizzando il traffico TCP, è possibile osservare l'avvio della connessione tra client e server tramite il <strong>Three-way handshake</strong>. I primi tre pacchetti catturati mostrano l'essenziale scambio dei flag <code>[SYN]</code>, <code>[SYN, ACK]</code> e <code>[ACK]</code>. Questa procedura garantisce l'instaurazione di un canale di comunicazione affidabile e orientato alla connessione prima dell'effettivo trasferimento dei dati (evidenziato dai successivi flag <code>[PSH, ACK]</code>).</p>
+                <p align="center" style="margin-top: 40px;">
+    <img src= "TCP.png" alt="TCP" style="max-width: 75%; margin: 20px 0;">
+    </p>
         </div>
     </section>
 

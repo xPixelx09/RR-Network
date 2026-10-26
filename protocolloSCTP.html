@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protocollo SCTP - Reti</title>
+    <title>Protocollo SCTP</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -42,7 +42,13 @@
             <p><strong>Analisi Bonus:</strong> Per capire se un attacco è in corso, gli amministratori di rete si affidano a software di analisi del traffico come <em>Wireshark</em>. Se i grafici mostrano picchi improvvisi e ingiustificati nell'uso della CPU dei server, volumi anomali di pacchetti provenienti da IP sconosciuti, o se si nota che il traffico SCTP sta venendo improvvisamente deviato verso indirizzi non autorizzati, significa che il sistema è sotto attacco e bisogna intervenire tempestivamente.</p>
 
             <img src="Foto3SCTP.png" alt="FotoSCTP3" style="max-width: 100%; margin: 20px 0;">
-
+        <br>
+        <br>
+                    <h2>Pacchetti WireShark</h2>
+                <p>L'analisi del protocollo SCTP (Stream Control Transmission Protocol) mostra meccanismi avanzati di trasporto orientati ai messaggi. Nella cattura si nota l'uso del pacchetto <code>SACK</code> per confermare la corretta ricezione dei dati e aggiornare la finestra di ricezione. Inoltre, lo scambio continuo di pacchetti <code>HEARTBEAT</code> e <code>HEARTBEAT_ACK</code> dimostra come il protocollo monitori costantemente l'affidabilità e l'attività del collegamento tra i nodi.</p>    
+                <p align="center" style="margin-top: 40px;">
+    <img src= "SCTP.png" alt="SCTP" style="max-width: 75%; margin: 20px 0;">
+    </p>
         </div>
     </section>
 

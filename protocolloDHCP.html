@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protocollo DHCP - Reti</title>
+    <title>Protocollo DHCP</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -47,7 +47,13 @@
             <p>Come facciamo ad accorgerci che un attacco DHCP è in pieno svolgimento? I segnali (Indicatori di Compromissione) sono abbastanza rumorosi. Sui PC Windows delle vittime inizieranno a comparire fastidiosi pop-up con il messaggio <em>"Rilevato conflitto di indirizzi IP"</em>. Navigando su internet, i browser mostreranno continui avvisi di "Certificato non valido" a causa del DNS malevolo che sta tentando di dirottare la vittima verso siti falsi.</p>
             
             <p>Lato amministratore, i software di monitoraggio segneranno che il 100% degli IP disponibili è stato assegnato in pochissimi minuti, magari in orario notturno, e i log degli switch esploderanno di porte mandate in blocco difensivo (stato di <em>err-disabled</em>). Basterà aprire il prompt dei comandi di un PC colpito e digitare <code>ipconfig</code> per avere la conferma finale: il Gateway non punterà più al router aziendale, ma all'indirizzo di una postazione locale. L'hacker è dentro la rete.</p>
-
+        <br>
+        <br>
+                    <h2>Pacchetti WireShark</h2>
+            <p>La cattura del traffico DHCP evidenzia il processo di assegnazione dinamica degli indirizzi IP, noto come sequenza <strong>D.O.R.A.</strong>. Nei pacchetti analizzati si distinguono chiaramente i quattro passaggi fondamentali: la richiesta broadcast iniziale del dispositivo per trovare un server (<em>Discover</em>), l'offerta di un indirizzo IP (<em>Offer</em>), la richiesta formale del client di utilizzare quell'IP (<em>Request</em>) e l'assegnazione definitiva della configurazione di rete da parte del router (<em>ACK</em>).</p>
+                <p align="center" style="margin-top: 40px;">
+    <img src= "DHCP.png" alt="DHCP" style="max-width: 75%; margin: 20px 0;">
+    </p>
         </div>
     </section>
 
